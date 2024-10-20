@@ -46,3 +46,16 @@ let soundEffects = [
 ]
 
 SoundEffectManager.shared.perLoadSoundEffects(soundEffects: soundEffects, in: .main)
+
+```
+
+### View Uasge
+
+There are extesion to View `soundEffect` and extension to `Button` named `soundEffectOnAction`.
+
+```swift
+    Button("Start Game") {
+        action
+    }
+    .soundEffectOnAction(.init(name: "click", fileExtension: "wav"))
+```
