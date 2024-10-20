@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SoundEffectButtonModifier: ViewModifier {
+public struct SoundEffectButtonModifier: ViewModifier {
     
     // MARK: - Properties
     
@@ -15,7 +15,7 @@ struct SoundEffectButtonModifier: ViewModifier {
     
     // MARK: - Body
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .simultaneousGesture(TapGesture().onEnded {
                 SoundEffectManager.shared.play(soundEffect: soundEffect)
@@ -23,8 +23,8 @@ struct SoundEffectButtonModifier: ViewModifier {
     }
 }
 
-extension View {
-    func soundEffectOnAction(_ soundEffect: SoundEffect) -> some View {
+public extension View {
+    public func soundEffectOnAction(_ soundEffect: SoundEffect) -> some View {
         self.modifier(SoundEffectButtonModifier(soundEffect: soundEffect))
     }
 }

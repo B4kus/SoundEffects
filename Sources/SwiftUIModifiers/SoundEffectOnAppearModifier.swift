@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SoundEffectOnAppearModifier: ViewModifier {
+public struct SoundEffectOnAppearModifier: ViewModifier {
     
     // MARK: - Properties
     
@@ -16,7 +16,7 @@ struct SoundEffectOnAppearModifier: ViewModifier {
     
     // MARK: - Body
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .onAppear {
                 switch soundEffectOptions {
@@ -32,8 +32,8 @@ struct SoundEffectOnAppearModifier: ViewModifier {
     }
 }
 
-extension View {
-    func soundEffect(_ soundEffect: SoundEffect,_ options: SoundEffectOptions? = nil) -> some View {
+public extension View {
+    public func soundEffect(_ soundEffect: SoundEffect,_ options: SoundEffectOptions? = nil) -> some View {
         self.modifier(SoundEffectOnAppearModifier(soundEffect: soundEffect, soundEffectOptions: options))
     }
 }

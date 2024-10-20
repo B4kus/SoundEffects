@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum SoundEffectOptions {
+public enum SoundEffectOptions {
     case delay(TimeInterval)
 }

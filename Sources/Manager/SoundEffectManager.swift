@@ -21,7 +21,7 @@ protocol SoundEffectMangerProtocol {
 ///
 /// - Note: The sound effects are cached using a dictionary to store `SystemSoundID`
 ///   for quick access.
-final class SoundEffectManager: SoundEffectMangerProtocol {
+public final class SoundEffectManager: SoundEffectMangerProtocol {
     
     // MARK: - Shared Instance
     
@@ -29,7 +29,7 @@ final class SoundEffectManager: SoundEffectMangerProtocol {
     ///
     /// - Important: Access this instance on the main thread, since the `@MainActor`
     ///   annotation ensures that operations are performed safely on the main queue.
-    @MainActor static let shared = SoundEffectManager()
+    @MainActor public static let shared = SoundEffectManager()
 
     // MARK: - Properties
     
@@ -71,7 +71,7 @@ final class SoundEffectManager: SoundEffectMangerProtocol {
     ///
     /// - Important: Ensure that the sound files are correctly named and available
     ///   in the bundle, otherwise an error will be thrown.
-    func perLoadSoundEffects(soundEffects: [SoundEffect], in bundle: Bundle = .main) {
+    public func perLoadSoundEffects(soundEffects: [SoundEffect], in bundle: Bundle = .main) {
         for soundEffect in soundEffects {
             logDebug("Registering sound effect: \(soundEffect.fullFileName)")
             if soundIDs[soundEffect.fullFileName] == nil {
@@ -93,7 +93,7 @@ final class SoundEffectManager: SoundEffectMangerProtocol {
     ///
     /// - Note: If the sound effect is not registered, an error is triggered, and the
     ///   `onSoundEffectManagerError` closure is called with `.fileNotFound`.
-    func play(soundEffect: SoundEffect) {
+    public func play(soundEffect: SoundEffect) {
         logDebug("Attempting to play sound effect: \(soundEffect.fullFileName)")
         if let soundID = soundIDs[soundEffect.fullFileName] {
             AudioServicesPlaySystemSound(soundID)
@@ -110,7 +110,7 @@ final class SoundEffectManager: SoundEffectMangerProtocol {
     ///
     /// - Note: If the sound effect is not found in the cache, an error is logged but no
     ///   exception is thrown.
-    func unload(soundEffect: SoundEffect) {
+    public func unload(soundEffect: SoundEffect) {
         logDebug("Unloading sound effect: \(soundEffect.fullFileName)")
         if let soundID = soundIDs[soundEffect.fullFileName] {
             AudioServicesDisposeSystemSoundID(soundID)
